@@ -1044,38 +1044,78 @@
         return base.sort(() => Math.random() - 0.5).slice(0, 6);
       }
 
-      function generateScript(geo, step) {
-        const name = generateName(geo);
-        const interests = generateInterests(geo).join(", ");
-        const stepDescription = steps[step];
-        const sites = geoSites[geo];
-        const sampleSites = [];
-        const shuffledSites = sites.sort(() => Math.random() - 0.5);
-        for (let i = 0; i < 5; i++) sampleSites.push(shuffledSites[i]);
+      const registrationSites = [
+  "https://twitter.com",
+  "https://www.reddit.com",
+  "https://www.tumblr.com",
+  "https://www.pinterest.com",
+  "https://www.quora.com",
+  "https://www.facebook.com",
+  "https://medium.com",
+  "https://disqus.com",
+  "https://www.producthunt.com",
+  "https://www.linkedin.com",
+  "https://www.instagram.com",
+  "https://www.tiktok.com",
+  "https://www.snapchat.com",
+  "https://www.github.com",
+  "https://www.gitlab.com",
+  "https://dribbble.com",
+  "https://www.behance.net",
+  "https://stackoverflow.com",
+  "https://hubpages.com",
+  "https://www.slideshare.net",
+  "https://www.soundcloud.com",
+  "https://bandcamp.com",
+  "https://www.mixcloud.com",
+  "https://www.vimeo.com",
+  "https://www.twitch.tv",
+  "https://www.goodreads.com",
+  "https://letterboxd.com",
+  "https://www.last.fm",
+  "https://www.flickr.com",
+  "https://500px.com",
+  "https://www.yelp.com",
+  "https://www.tripadvisor.com",
+  "https://www.trello.com",
+  "https://www.notion.so",
+  "https://www.slack.com",
+  "https://www.discord.com",
+  "https://www.meetup.com"
+];
 
-        let youtubePart = "";
-        if (step === "3") {
-          const searches = geoYouTubeSearches[geo];
-          const sampleSearches = [];
-          const shuffledSearches = searches.sort(() => Math.random() - 0.5);
-          for (let i = 0; i < 3 && i < searches.length; i++)
-            sampleSearches.push(shuffledSearches[i]);
-          youtubePart = `
+function generateScript(geo, step) {
+  const name = generateName(geo);
+  const interests = generateInterests(geo).join(", ");
+  const stepDescription = steps[step];
+  const sites = geoSites[geo];
+  const sampleSites = [];
+  const shuffledSites = sites.sort(() => Math.random() - 0.5);
+  for (let i = 0; i < 5; i++) sampleSites.push(shuffledSites[i]);
+
+  let youtubePart = "";
+  if (step === "3") {
+    const searches = geoYouTubeSearches[geo];
+    const sampleSearches = [];
+    const shuffledSearches = searches.sort(() => Math.random() - 0.5);
+    for (let i = 0; i < 3 && i < searches.length; i++)
+      sampleSearches.push(shuffledSearches[i]);
+    youtubePart = `
 Просмотр видео на YouTube по интересующим темам:
 ${sampleSearches.map((s) => "- " + s).join("\n")}
     `.trim();
-        }
+  }
 
-        let registrationPart = "";
-        if (step === "2") {
-          const sampleRegs = shuffledSites.slice(5, 10); // следующие 5 сайтов
-          registrationPart = `
+  let registrationPart = "";
+  if (step === "2") {
+    const sampleRegs = registrationSites.sort(() => Math.random() - 0.5).slice(0, 5);
+    registrationPart = `
 Рекомендуемые сайты для регистрации:
 ${sampleRegs.map((s) => "- " + s).join("\n")}
     `.trim();
-        }
+  }
 
-        const script = `
+  const script = `
 # Сценарий фарма - Гео: ${geo}, Этап: ${step}
 
 Имя персонажа: ${name}
@@ -1092,8 +1132,9 @@ ${youtubePart ? youtubePart + "\n" : ""}---
 Используйте данные рекомендации для эффективного фарма с учётом гео и этапа процесса.
   `.trim();
 
-        return script;
-      }
+  return script;
+}
+
 
       function generate() {
         const geo = document.getElementById("geo").value;
