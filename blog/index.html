@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Education Blog - FinanceWise</title>
+    <meta name="description" content="Expert insights on financial literacy, budgeting strategies, investment planning, and business development. Learn from financial professionals and transform your money mindset.">
+    <link rel="canonical" href="/blog/">
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Financial Education Blog - FinanceWise">
+    <meta property="og:description" content="Expert insights on financial literacy, budgeting strategies, investment planning, and business development.">
+    <meta property="og:url" content="/blog/">
+    <meta property="og:type" content="website">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <style>
+        .blog-hero {
+            padding: calc(64px + var(--space-12)) 0 var(--space-12);
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+            text-align: center;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-8);
+            margin-top: var(--space-12);
+        }
+        
+        .blog-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .blog-card-image {
+            height: 200px;
+            background: var(--gray-50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .blog-card-content {
+            padding: var(--space-6);
+        }
+        
+        .blog-card-date {
+            font-size: var(--font-size-sm);
+            color: var(--gray-500);
+            margin-bottom: var(--space-2);
+        }
+        
+        .blog-card-title {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--space-3);
+            line-height: var(--line-height-tight);
+        }
+        
+        .blog-card-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .blog-card-title a:hover {
+            color: var(--primary);
+        }
+        
+        .blog-card-excerpt {
+            color: var(--gray-600);
+            line-height: var(--line-height-loose);
+            margin-bottom: var(--space-4);
+        }
+        
+        .blog-card-link {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+        }
+        
+        .blog-card-link:hover {
+            color: var(--primary-dark);
+        }
+        
+        .blog-categories {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            margin-bottom: var(--space-8);
+            flex-wrap: wrap;
+        }
+        
+        .blog-category {
+            padding: var(--space-2) var(--space-4);
+            background: var(--gray-100);
+            color: var(--gray-600);
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .blog-category:hover,
+        .blog-category.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-brand">
+                <svg class="nav-logo" role="img" aria-labelledby="logo-title">
+                    <title id="logo-title">FinanceWise Logo</title>
+                    <rect x="2" y="2" width="20" height="20" rx="4" fill="#6366f1"/>
+                    <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="nav-brand-text">FinanceWise</span>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/about.html" class="nav-link">About</a></li>
+                <li><a href="/services.html" class="nav-link">Services</a></li>
+                <li><a href="/blog/" class="nav-link active">Blog</a></li>
+                <li><a href="/contact.html" class="nav-link">Contact</a></li>
+                <li><a href="/contact.html" class="btn btn-primary nav-cta">Get Started</a></li>
+            </ul>
+            
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="blog-hero">
+            <div class="container">
+                <h1 class="hero-title">Financial Education Blog</h1>
+                <p class="hero-description">Expert insights, practical tips, and strategies to help you master your financial future</p>
+                
+                <div class="blog-categories">
+                    <a href="#" class="blog-category active">All Posts</a>
+                    <a href="#" class="blog-category">Budgeting</a>
+                    <a href="#" class="blog-category">Investing</a>
+                    <a href="#" class="blog-category">Business</a>
+                    <a href="#" class="blog-category">Planning</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Posts -->
+        <section class="gallery">
+            <div class="container">
+                <div class="blog-grid">
+                    <!-- Blog Post 1 -->
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <svg width="80" height="80" viewBox="0 0 80 80" role="img">
+                                <circle cx="40" cy="40" r="35" fill="none" stroke="#6366f1" stroke-width="3"/>
+                                <path d="M25 40 L35 50 L55 30" stroke="#6366f1" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="40" cy="15" r="3" fill="#6366f1"/>
+                                <circle cx="40" cy="65" r="3" fill="#6366f1"/>
+                                <circle cx="15" cy="40" r="3" fill="#6366f1"/>
+                                <circle cx="65" cy="40" r="3" fill="#6366f1"/>
+                            </svg>
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-card-date">January 15, 2025</div>
+                            <h2 class="blog-card-title">
+                                <a href="/blog/mastering-zero-based-budgeting-complete-guide">Mastering Zero-Based Budgeting: A Complete Guide</a>
+                            </h2>
+                            <p class="blog-card-excerpt">Learn how zero-based budgeting can transform your financial management by ensuring every dollar has a purpose and maximizing your savings potential.</p>
+                            <a href="/blog/mastering-zero-based-budgeting-complete-guide" class="blog-card-link">Read More →</a>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 2 -->
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <svg width="80" height="80" viewBox="0 0 80 80" role="img">
+                                <polyline points="15,60 25,45 35,50 45,30 55,35 65,20" fill="none" stroke="#14b8a6" stroke-width="3"/>
+                                <circle cx="25" cy="45" r="3" fill="#14b8a6"/>
+                                <circle cx="35" cy="50" r="3" fill="#14b8a6"/>
+                                <circle cx="45" cy="30" r="3" fill="#14b8a6"/>
+                                <circle cx="55" cy="35" r="3" fill="#14b8a6"/>
+                                <rect x="20" y="65" width="40" height="8" rx="4" fill="#14b8a6"/>
+                                <text x="40" y="69" text-anchor="middle" font-size="6" fill="white">GROWTH</text>
+                            </svg>
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-card-date">January 12, 2025</div>
+                            <h2 class="blog-card-title">
+                                <a href="/blog/smart-investment-strategies-building-wealth">Smart Investment Strategies for Building Long-Term Wealth</a>
+                            </h2>
+                            <p class="blog-card-excerpt">Discover proven investment approaches that can help you build sustainable wealth over time, from diversification to compound interest strategies.</p>
+                            <a href="/blog/smart-investment-strategies-building-wealth" class="blog-card-link">Read More →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter CTA -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Stay Updated with Financial Tips</h2>
+                    <p class="cta-description">Subscribe to our newsletter for weekly insights, practical tips, and exclusive resources to accelerate your financial education journey.</p>
+                    <div class="cta-actions">
+                        <a href="/contact.html" class="btn btn-primary btn-large">Subscribe Now</a>
+                        <a href="/services.html" class="btn btn-outline btn-large">Explore Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg class="footer-logo-icon" role="img">
+                            <rect x="2" y="2" width="20" height="20" rx="4" fill="#6366f1"/>
+                            <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="footer-brand-text">FinanceWise</span>
+                    </div>
+                    <p class="footer-description">Empowering financial literacy and business growth for a better future.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-group">
+                        <h4 class="footer-title">About Product</h4>
+                        <ul class="footer-menu">
+                            <li><a href="/about.html">About Us</a></li>
+                            <li><a href="/services.html">Services</a></li>
+                            <li><a href="/blog/">Blog</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-group">
+                        <h4 class="footer-title">Company</h4>
+                        <ul class="footer-menu">
+                            <li><a href="/about.html">Our Story</a></li>
+                            <li><a href="/blog/">Blog</a></li>
+                            <li><a href="/contact.html">Careers</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-group">
+                        <h4 class="footer-title">Support</h4>
+                        <ul class="footer-menu">
+                            <li><a href="/contact.html">Help Center</a></li>
+                            <li><a href="/contact.html">Account Information</a></li>
+                            <li><a href="/contact.html">Early Access</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4 class="footer-title">Stay Updated</h4>
+                    <form class="newsletter-form" onsubmit="return false;">
+                        <input type="email" placeholder="Your email address" class="newsletter-input">
+                        <button type="submit" class="btn btn-primary">Get Early Access</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-legal">© 2025 FinanceWise • <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a> • Registered in AU • Operating remotely from Sydney, Australia. Physical address available on request.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+    <script>
+        // Blog category filtering (basic implementation)
+        document.addEventListener('DOMContentLoaded', function() {
+            const categories = document.querySelectorAll('.blog-category');
+            categories.forEach(category => {
+                category.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    categories.forEach(cat => cat.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

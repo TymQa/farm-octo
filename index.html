@@ -1,1164 +1,585 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Генератор сценариев фарма</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <h1>Генератор сценариев фарма по гео и этапам</h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanceWise - Master Your Money, Build Your Future</title>
+    <meta name="description" content="Transform your financial future with expert budgeting tools, business development resources, and comprehensive financial literacy education. Start your journey today.">
+    <link rel="canonical" href="/">
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="FinanceWise - Master Your Money, Build Your Future">
+    <meta property="og:description" content="Transform your financial future with expert budgeting tools, business development resources, and comprehensive financial literacy education.">
+    <meta property="og:url" content="/">
+    <meta property="og:type" content="website">
+    
+    <link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-brand">
+                <svg class="nav-logo" role="img" aria-labelledby="logo-title">
+                    <title id="logo-title">FinanceWise Logo</title>
+                    <rect x="2" y="2" width="20" height="20" rx="4" fill="#6366f1"/>
+                    <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="nav-brand-text">FinanceWise</span>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/" class="nav-link active">Home</a></li>
+                <li><a href="/about.html" class="nav-link">About</a></li>
+                <li><a href="/services.html" class="nav-link">Services</a></li>
+                <li><a href="/blog/" class="nav-link">Blog</a></li>
+                <li><a href="/contact.html" class="nav-link">Contact</a></li>
+                <li><a href="/contact.html" class="btn btn-primary nav-cta">Get Started</a></li>
+            </ul>
+            
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+            </button>
+        </nav>
+    </header>
 
-    <label for="geo">Выберите гео:</label>
-    <select id="geo" onchange="generate()">
-      <option value="UK">UK (Великобритания)</option>
-      <option value="DE">DE (Германия)</option>
-      <option value="ES">ES (Испания)</option>
-      <option value="IE">IE (Ирландия)</option>
-    </select>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">Are you ready <span class="text-primary">+</span><br>for a revolution in<br>financial literacy?</h1>
+                        <p class="hero-subtitle">Explore Us</p>
+                        <p class="hero-description">Transform your relationship with money through expert-guided education, powerful budgeting tools, and strategic business development resources.</p>
+                        
+                        <div class="hero-actions">
+                            <div class="email-capture">
+                                <input type="email" placeholder="Your email address" class="email-input" id="hero-email">
+                                <button class="btn btn-primary" onclick="location.href='/contact.html'">Get Early Access</button>
+                            </div>
+                        </div>
+                        
+                        <div class="trusted-by">
+                            <p class="trusted-text">Trusted by leading organizations</p>
+                            <div class="trust-logos">
+                                <svg class="trust-logo" role="img" aria-label="Forbes"><rect width="60" height="20" rx="2" fill="#666"/><text x="30" y="14" text-anchor="middle" fill="white" font-size="8">Forbes</text></svg>
+                                <svg class="trust-logo" role="img" aria-label="Intel"><rect width="60" height="20" rx="2" fill="#666"/><text x="30" y="14" text-anchor="middle" fill="white" font-size="8">Intel</text></svg>
+                                <svg class="trust-logo" role="img" aria-label="VISA"><rect width="60" height="20" rx="2" fill="#666"/><text x="30" y="14" text-anchor="middle" fill="white" font-size="8">VISA</text></svg>
+                                <svg class="trust-logo" role="img" aria-label="Nike"><rect width="60" height="20" rx="2" fill="#666"/><text x="30" y="14" text-anchor="middle" fill="white" font-size="8">Nike</text></svg>
+                                <svg class="trust-logo" role="img" aria-label="Google"><rect width="60" height="20" rx="2" fill="#666"/><text x="30" y="14" text-anchor="middle" fill="white" font-size="8">Google</text></svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-visual">
+                        <div class="phone-mockup">
+                            <svg class="phone-frame" viewBox="0 0 300 600" role="img" aria-labelledby="phone-title">
+                                <title id="phone-title">FinanceWise Mobile App Preview</title>
+                                <defs>
+                                    <linearGradient id="phoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#6366f1"/>
+                                        <stop offset="100%" style="stop-color:#3b82f6"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="300" height="600" rx="30" fill="url(#phoneGrad)"/>
+                                <rect x="20" y="50" width="260" height="500" rx="20" fill="white"/>
+                                
+                                <!-- Screen Content -->
+                                <text x="150" y="90" text-anchor="middle" font-size="14" font-weight="600">9:41 AM</text>
+                                <text x="150" y="110" text-anchor="middle" font-size="12" fill="#666">100%</text>
+                                
+                                <text x="40" y="140" font-size="16" font-weight="600">Your Balance</text>
+                                <text x="40" y="170" font-size="32" font-weight="700" fill="#6366f1">$15,786.00</text>
+                                
+                                <!-- Action Buttons -->
+                                <rect x="40" y="190" width="100" height="35" rx="17" fill="#6366f1"/>
+                                <text x="90" y="212" text-anchor="middle" fill="white" font-size="12">Send</text>
+                                
+                                <rect x="160" y="190" width="100" height="35" rx="17" fill="#6366f1"/>
+                                <text x="210" y="212" text-anchor="middle" fill="white" font-size="12">Request</text>
+                                
+                                <!-- Transaction List -->
+                                <text x="40" y="250" font-size="14" font-weight="600">Recent</text>
+                                
+                                <g class="transaction-item">
+                                    <circle cx="60" cy="280" r="15" fill="#14b8a6"/>
+                                    <text x="85" y="275" font-size="12" font-weight="500">Salary</text>
+                                    <text x="85" y="290" font-size="10" fill="#666">Jan 15</text>
+                                    <text x="250" y="285" font-size="12" font-weight="600" text-anchor="end">$3,200</text>
+                                </g>
+                                
+                                <g class="transaction-item">
+                                    <circle cx="60" cy="320" r="15" fill="#f97316"/>
+                                    <text x="85" y="315" font-size="12" font-weight="500">Rent</text>
+                                    <text x="85" y="330" font-size="10" fill="#666">Jan 14</text>
+                                    <text x="250" y="325" font-size="12" font-weight="600" text-anchor="end">-$1,200</text>
+                                </g>
+                                
+                                <g class="transaction-item">
+                                    <rect x="45" y="345" width="30" height="30" rx="4" fill="#6366f1"/>
+                                    <text x="85" y="355" font-size="12" font-weight="500">Investment</text>
+                                    <text x="85" y="370" font-size="10" fill="#666">Jan 12</text>
+                                    <text x="250" y="365" font-size="12" font-weight="600" text-anchor="end">$500</text>
+                                </g>
+                                
+                                <!-- Bottom Cards -->
+                                <rect x="40" y="400" width="220" height="60" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+                                <text x="50" y="420" font-size="10" fill="#666">VISA</text>
+                                <text x="50" y="435" font-size="12" font-weight="600">•••• 2468</text>
+                                <text x="250" y="435" font-size="12" font-weight="600" text-anchor="end">$2,345</text>
+                                
+                                <rect x="40" y="470" width="220" height="60" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+                                <text x="50" y="490" font-size="10" fill="#666">Apple Pay</text>
+                                <text x="50" y="505" font-size="12" font-weight="600">Digital Wallet</text>
+                                <text x="250" y="505" font-size="12" font-weight="600" text-anchor="end">$856</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <br />
+        <!-- Features Section -->
+        <section class="features-dark">
+            <div class="container">
+                <div class="section-header-center">
+                    <h2 class="section-title white">We Made Banking <span class="text-primary">Easier!</span></h2>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-visual">
+                            <svg class="feature-phone" viewBox="0 0 200 350" role="img">
+                                <rect width="200" height="350" rx="20" fill="white"/>
+                                <rect x="20" y="30" width="160" height="290" rx="10" fill="#f8fafc"/>
+                                
+                                <!-- QR Code representation -->
+                                <rect x="60" y="80" width="80" height="80" fill="#000"/>
+                                <rect x="65" y="85" width="70" height="70" fill="white"/>
+                                <rect x="70" y="90" width="10" height="10" fill="#000"/>
+                                <rect x="85" y="90" width="10" height="10" fill="#000"/>
+                                <rect x="100" y="90" width="10" height="10" fill="#000"/>
+                                <rect x="115" y="90" width="10" height="10" fill="#000"/>
+                                <rect x="70" y="105" width="10" height="10" fill="#000"/>
+                                <rect x="115" y="105" width="10" height="10" fill="#000"/>
+                                <rect x="70" y="120" width="10" height="10" fill="#000"/>
+                                <rect x="85" y="120" width="10" height="10" fill="#000"/>
+                                <rect x="100" y="120" width="10" height="10" fill="#000"/>
+                                <rect x="115" y="120" width="10" height="10" fill="#000"/>
+                                <rect x="70" y="135" width="10" height="10" fill="#000"/>
+                                <rect x="115" y="135" width="10" height="10" fill="#000"/>
+                                <rect x="70" y="150" width="55" height="5" fill="#000"/>
+                                
+                                <text x="100" y="180" text-anchor="middle" font-size="10" fill="#666">Scan to Pay</text>
+                                <text x="100" y="200" text-anchor="middle" font-size="8" fill="#999">Budget tracking made simple</text>
+                            </svg>
+                        </div>
+                        <div class="feature-content">
+                            <h3 class="feature-title">QR transfer,<br>a piece of cake!</h3>
+                            <p class="feature-description">Track expenses instantly with smart categorization and budget alerts.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-visual">
+                            <svg class="feature-phone" viewBox="0 0 200 350" role="img">
+                                <rect width="200" height="350" rx="20" fill="white"/>
+                                <rect x="20" y="30" width="160" height="290" rx="10" fill="#f8fafc"/>
+                                
+                                <text x="100" y="60" text-anchor="middle" font-size="12" font-weight="600">Monthly Budget</text>
+                                
+                                <!-- Budget visualization -->
+                                <circle cx="100" cy="120" r="30" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+                                <circle cx="100" cy="120" r="30" fill="none" stroke="#6366f1" stroke-width="8" 
+                                        stroke-dasharray="120 60" transform="rotate(-90 100 120)"/>
+                                <text x="100" y="125" text-anchor="middle" font-size="14" font-weight="600">67%</text>
+                                
+                                <rect x="40" y="170" width="120" height="30" rx="4" fill="#f1f5f9"/>
+                                <rect x="45" y="175" width="15" height="20" rx="2" fill="#6366f1"/>
+                                <text x="70" y="185" font-size="10">Housing</text>
+                                <text x="150" y="185" font-size="10" text-anchor="end">$1,200</text>
+                                
+                                <rect x="40" y="210" width="120" height="30" rx="4" fill="#f1f5f9"/>
+                                <rect x="45" y="215" width="15" height="20" rx="2" fill="#14b8a6"/>
+                                <text x="70" y="225" font-size="10">Food</text>
+                                <text x="150" y="225" font-size="10" text-anchor="end">$400</text>
+                                
+                                <rect x="40" y="250" width="120" height="30" rx="4" fill="#f1f5f9"/>
+                                <rect x="45" y="255" width="15" height="20" rx="2" fill="#f97316"/>
+                                <text x="70" y="265" font-size="10">Transport</text>
+                                <text x="150" y="265" font-size="10" text-anchor="end">$200</text>
+                            </svg>
+                        </div>
+                        <div class="feature-content">
+                            <h3 class="feature-title">Access to transaction<br>detail in a second</h3>
+                            <p class="feature-description">Get instant insights into your spending patterns and financial health.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-visual">
+                            <svg class="feature-phone" viewBox="0 0 200 350" role="img">
+                                <rect width="200" height="350" rx="20" fill="white"/>
+                                <rect x="20" y="30" width="160" height="290" rx="10" fill="#f8fafc"/>
+                                
+                                <text x="100" y="60" text-anchor="middle" font-size="12" font-weight="600">Smart Alerts</text>
+                                
+                                <!-- Alert card -->
+                                <rect x="30" y="80" width="140" height="60" rx="8" fill="#6366f1"/>
+                                <text x="40" y="100" fill="white" font-size="10" font-weight="600">Budget Alert</text>
+                                <text x="40" y="115" fill="white" font-size="8">You've spent 80% of your</text>
+                                <text x="40" y="125" fill="white" font-size="8">dining budget this month</text>
+                                
+                                <!-- Spending meter -->
+                                <rect x="30" y="160" width="140" height="40" rx="4" fill="white"/>
+                                <rect x="35" y="165" width="130" height="8" rx="4" fill="#e2e8f0"/>
+                                <rect x="35" y="165" width="104" height="8" rx="4" fill="#f97316"/>
+                                <text x="100" y="190" text-anchor="middle" font-size="10" fill="#f97316" font-weight="600">80% Used</text>
+                                
+                                <text x="100" y="230" text-anchor="middle" font-size="10" fill="#666">Stay on track with</text>
+                                <text x="100" y="245" text-anchor="middle" font-size="10" fill="#666">smart notifications</text>
+                            </svg>
+                        </div>
+                        <div class="feature-content">
+                            <h3 class="feature-title">Control card spend,<br>before it happens.</h3>
+                            <p class="feature-description">Set intelligent spending limits and get real-time alerts to stay within budget.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <label for="step">Выберите этап:</label>
-    <select id="step" onchange="generate()">
-      <option value="1">1 - Веб-серфинг</option>
-      <option value="2">2 - Gmail + Регистрации</option>
-      <option value="3">3 - Прогрев и активность</option>
-    </select>
+        <!-- Gallery Section -->
+        <section class="gallery">
+            <div class="container">
+                <div class="section-header-center">
+                    <h2 class="section-title">Educational Resources</h2>
+                    <p class="section-description">Comprehensive tools and guides to master your financial journey</p>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <svg class="gallery-svg" viewBox="0 0 300 200" role="img">
+                            <title>Budget Planning</title>
+                            <rect width="300" height="200" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+                            <circle cx="60" cy="60" r="30" fill="none" stroke="#6366f1" stroke-width="4"/>
+                            <path d="M45 60 L55 70 L75 50" stroke="#6366f1" stroke-width="3" fill="none"/>
+                            <rect x="120" y="40" width="120" height="8" rx="4" fill="#6366f1"/>
+                            <rect x="120" y="60" width="80" height="8" rx="4" fill="#14b8a6"/>
+                            <rect x="120" y="80" width="100" height="8" rx="4" fill="#f97316"/>
+                            <text x="150" y="130" text-anchor="middle" font-size="14" font-weight="600">Budget Planning</text>
+                        </svg>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <svg class="gallery-svg" viewBox="0 0 300 200" role="img">
+                            <title>Investment Analysis</title>
+                            <rect width="300" height="200" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+                            <polyline points="40,160 80,120 120,140 160,80 200,100 240,60" fill="none" stroke="#6366f1" stroke-width="4"/>
+                            <circle cx="80" cy="120" r="4" fill="#6366f1"/>
+                            <circle cx="120" cy="140" r="4" fill="#6366f1"/>
+                            <circle cx="160" cy="80" r="4" fill="#6366f1"/>
+                            <circle cx="200" cy="100" r="4" fill="#6366f1"/>
+                            <text x="150" y="190" text-anchor="middle" font-size="14" font-weight="600">Investment Analysis</text>
+                        </svg>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <svg class="gallery-svg" viewBox="0 0 300 200" role="img">
+                            <title>Debt Management</title>
+                            <rect width="300" height="200" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+                            <rect x="60" y="60" width="40" height="80" rx="4" fill="#ef4444"/>
+                            <rect x="120" y="80" width="40" height="60" rx="4" fill="#f97316"/>
+                            <rect x="180" y="100" width="40" height="40" rx="4" fill="#14b8a6"/>
+                            <path d="M70 50 L70 40 M130 70 L130 60 M190 90 L190 80" stroke="#666" stroke-width="2"/>
+                            <text x="150" y="180" text-anchor="middle" font-size="14" font-weight="600">Debt Management</text>
+                        </svg>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <svg class="gallery-svg" viewBox="0 0 300 200" role="img">
+                            <title>Emergency Fund</title>
+                            <rect width="300" height="200" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+                            <circle cx="150" cy="100" r="50" fill="none" stroke="#14b8a6" stroke-width="6"/>
+                            <rect x="130" y="80" width="40" height="40" rx="4" fill="#14b8a6"/>
+                            <text x="150" y="105" text-anchor="middle" font-size="18" fill="white">$</text>
+                            <text x="150" y="170" text-anchor="middle" font-size="14" font-weight="600">Emergency Fund</text>
+                        </svg>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <svg class="gallery-svg" viewBox="0 0 300 200" role="img">
+                            <title>Business Growth</title>
+                            <rect width="300" height="200" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+                            <polygon points="150,40 170,80 210,80 180,110 190,150 150,130 110,150 120,110 90,80 130,80" fill="#6366f1"/>
+                            <circle cx="100" cy="140" r="15" fill="#14b8a6"/>
+                            <circle cx="200" cy="140" r="15" fill="#14b8a6"/>
+                            <text x="150" y="190" text-anchor="middle" font-size="14" font-weight="600">Business Growth</text>
+                        </svg>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <svg class="gallery-svg" viewBox="0 0 300 200" role="img">
+                            <title>Financial Reports</title>
+                            <rect width="300" height="200" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+                            <rect x="60" y="40" width="180" height="120" rx="4" fill="white" stroke="#e2e8f0"/>
+                            <rect x="80" y="60" width="140" height="4" rx="2" fill="#e2e8f0"/>
+                            <rect x="80" y="80" width="100" height="4" rx="2" fill="#e2e8f0"/>
+                            <rect x="80" y="100" width="120" height="4" rx="2" fill="#e2e8f0"/>
+                            <circle cx="200" cy="120" r="20" fill="#6366f1"/>
+                            <text x="200" y="125" text-anchor="middle" font-size="12" fill="white">✓</text>
+                            <text x="150" y="190" text-anchor="middle" font-size="14" font-weight="600">Financial Reports</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <br />
+        <!-- App Preview Section -->
+        <section class="app-preview">
+            <div class="container">
+                <div class="section-header-center">
+                    <h2 class="section-title">To be released on App Store soon...</h2>
+                </div>
+                
+                <div class="app-preview-content">
+                    <div class="app-phone-mockup">
+                        <svg class="app-phone" viewBox="0 0 300 600" role="img" aria-labelledby="app-title">
+                            <title id="app-title">FinanceWise App Coming Soon</title>
+                            <defs>
+                                <linearGradient id="appPhoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#6366f1"/>
+                                    <stop offset="100%" style="stop-color:#3b82f6"/>
+                                </linearGradient>
+                            </defs>
+                            <rect width="300" height="600" rx="30" fill="url(#appPhoneGrad)"/>
+                            <rect x="20" y="50" width="260" height="500" rx="20" fill="white"/>
+                            
+                            <!-- App Interface -->
+                            <text x="150" y="90" text-anchor="middle" font-size="14" font-weight="600">9:41 AM</text>
+                            
+                            <!-- Logo -->
+                            <rect x="130" y="110" width="40" height="40" rx="8" fill="#6366f1"/>
+                            <text x="150" y="135" text-anchor="middle" font-size="16" fill="white" font-weight="700">FW</text>
+                            
+                            <text x="150" y="170" text-anchor="middle" font-size="18" font-weight="700">FinanceWise</text>
+                            <text x="150" y="190" text-anchor="middle" font-size="12" fill="#666">Master Your Money</text>
+                            
+                            <!-- Feature Icons -->
+                            <g class="feature-row">
+                                <circle cx="80" cy="240" r="25" fill="#f8fafc" stroke="#e2e8f0"/>
+                                <rect x="70" y="230" width="20" height="20" rx="2" fill="#6366f1"/>
+                                <text x="80" y="270" text-anchor="middle" font-size="10">Budget</text>
+                                
+                                <circle cx="150" cy="240" r="25" fill="#f8fafc" stroke="#e2e8f0"/>
+                                <rect x="140" y="230" width="20" height="20" rx="2" fill="#14b8a6"/>
+                                <text x="150" y="270" text-anchor="middle" font-size="10">Invest</text>
+                                
+                                <circle cx="220" cy="240" r="25" fill="#f8fafc" stroke="#e2e8f0"/>
+                                <rect x="210" y="230" width="20" height="20" rx="2" fill="#f97316"/>
+                                <text x="220" y="270" text-anchor="middle" font-size="10">Track</text>
+                            </g>
+                            
+                            <!-- Stats -->
+                            <rect x="40" y="300" width="220" height="80" rx="8" fill="#f8fafc"/>
+                            <text x="50" y="320" font-size="12" font-weight="600">Your Progress</text>
+                            <text x="50" y="340" font-size="10" fill="#666">This Month</text>
+                            
+                            <rect x="50" y="350" width="200" height="8" rx="4" fill="#e2e8f0"/>
+                            <rect x="50" y="350" width="140" height="8" rx="4" fill="#6366f1"/>
+                            <text x="250" y="370" text-anchor="end" font-size="12" font-weight="600">70% Complete</text>
+                            
+                            <!-- Action Button -->
+                            <rect x="60" y="420" width="180" height="45" rx="22" fill="#6366f1"/>
+                            <text x="150" y="448" text-anchor="middle" font-size="14" fill="white" font-weight="600">Get Started</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <button onclick="generate()">Сгенерировать сценарий</button>
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <div class="container">
+                <div class="section-header-center">
+                    <h2 class="section-title">Success Stories</h2>
+                    <p class="section-description">Real results from people who transformed their financial lives</p>
+                </div>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-quote">"FinanceWise completely changed how I think about money. I went from living paycheck to paycheck to having a 6-month emergency fund in just one year."</p>
+                            <div class="testimonial-author">
+                                <h4 class="testimonial-name">Sarah Chen</h4>
+                                <p class="testimonial-role">Marketing Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-quote">"The business development resources helped me launch my consulting firm. The financial planning tools kept me on track during the challenging first year."</p>
+                            <div class="testimonial-author">
+                                <h4 class="testimonial-name">Marcus Rodriguez</h4>
+                                <p class="testimonial-role">Business Consultant</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-quote">"As a recent graduate, I was overwhelmed by financial decisions. FinanceWise gave me the confidence to start investing and plan for my future."</p>
+                            <div class="testimonial-author">
+                                <h4 class="testimonial-name">Emily Johnson</h4>
+                                <p class="testimonial-role">Software Developer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div id="result" style="margin-top: 20px"></div>
+        <!-- Pricing Section -->
+        <section class="pricing">
+            <div class="container">
+                <div class="section-header-center">
+                    <h2 class="section-title">Choose Your Learning Path</h2>
+                    <p class="section-description">Start your financial education journey today</p>
+                </div>
+                
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3 class="pricing-title">Essential</h3>
+                        <div class="pricing-price">
+                            <span class="pricing-currency">$</span>
+                            <span class="pricing-amount">29</span>
+                            <span class="pricing-period">/month</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>Basic budgeting tools</li>
+                            <li>Educational articles</li>
+                            <li>Monthly financial check-ins</li>
+                            <li>Email support</li>
+                        </ul>
+                        <a href="/contact.html" class="btn btn-outline">Get Started</a>
+                    </div>
+                    
+                    <div class="pricing-card pricing-featured">
+                        <div class="pricing-badge">Most Popular</div>
+                        <h3 class="pricing-title">Professional</h3>
+                        <div class="pricing-price">
+                            <span class="pricing-currency">$</span>
+                            <span class="pricing-amount">79</span>
+                            <span class="pricing-period">/month</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>Advanced budgeting & analytics</li>
+                            <li>Business development resources</li>
+                            <li>Investment planning tools</li>
+                            <li>1-on-1 expert consultations</li>
+                            <li>Priority support</li>
+                        </ul>
+                        <a href="/contact.html" class="btn btn-primary">Get Started</a>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <h3 class="pricing-title">Enterprise</h3>
+                        <div class="pricing-price">
+                            <span class="pricing-currency">$</span>
+                            <span class="pricing-amount">199</span>
+                            <span class="pricing-period">/month</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>Team financial planning</li>
+                            <li>Custom business solutions</li>
+                            <li>Dedicated account manager</li>
+                            <li>White-label options</li>
+                        </ul>
+                        <a href="/contact.html" class="btn btn-outline">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <script>
-      const names = {
-        UK: {
-          male: [
-            "Oliver",
-            "George",
-            "Harry",
-            "Jack",
-            "Jacob",
-            "Noah",
-            "Charlie",
-            "Thomas",
-            "Oscar",
-            "William",
-          ],
-          female: [
-            "Olivia",
-            "Amelia",
-            "Isla",
-            "Emily",
-            "Poppy",
-            "Ella",
-            "Ava",
-            "Isabella",
-            "Jessica",
-            "Lily",
-          ],
-        },
-        DE: {
-          male: [
-            "Ben",
-            "Paul",
-            "Leon",
-            "Finn",
-            "Elias",
-            "Luis",
-            "Jonas",
-            "Felix",
-            "Maximilian",
-            "Alexander",
-          ],
-          female: [
-            "Emma",
-            "Mia",
-            "Hannah",
-            "Anna",
-            "Sophia",
-            "Lea",
-            "Marie",
-            "Lena",
-            "Lina",
-            "Clara",
-          ],
-        },
-        ES: {
-          male: [
-            "Hugo",
-            "Martín",
-            "Pablo",
-            "Lucas",
-            "Mateo",
-            "Leo",
-            "Manuel",
-            "Diego",
-            "Alvaro",
-            "Adrián",
-          ],
-          female: [
-            "Lucía",
-            "Sofía",
-            "Martina",
-            "María",
-            "Paula",
-            "Julia",
-            "Daniela",
-            "Valeria",
-            "Emma",
-            "Alba",
-          ],
-        },
-        IE: {
-          male: [
-            "Jack",
-            "James",
-            "Conor",
-            "Daniel",
-            "Sean",
-            "Michael",
-            "Ryan",
-            "Luke",
-            "Adam",
-            "Dylan",
-          ],
-          female: [
-            "Emily",
-            "Sophie",
-            "Aoife",
-            "Grace",
-            "Mia",
-            "Anna",
-            "Ella",
-            "Clara",
-            "Zoe",
-            "Sarah",
-          ],
-        },
-      };
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Ready to Transform Your Financial Future?</h2>
+                    <p class="cta-description">Join thousands of people who have already started their journey to financial freedom with FinanceWise.</p>
+                    <div class="cta-actions">
+                        <a href="/contact.html" class="btn btn-primary btn-large">Start Your Journey</a>
+                        <a href="/services.html" class="btn btn-outline btn-large">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-      const commonInterests = {
-        UK: [
-          "sports",
-          "music",
-          "movies",
-          "technology",
-          "travel",
-          "food",
-          "gaming",
-          "literature",
-          "cars",
-          "art",
-          "photography",
-          "fitness",
-          "fashion",
-          "history",
-          "science",
-          "theater",
-          "gardening",
-          "education",
-          "comedy",
-          "cycling",
-          "environment",
-          "politics",
-          "health",
-          "yoga",
-          "finance",
-          "space",
-          "coffee",
-          "crafts",
-          "pets",
-          "running",
-          "hiking",
-          "dancing",
-          "beach",
-          "motorbikes",
-          "volunteering",
-          "architecture",
-          "languages",
-          "gaming",
-          "writing",
-          "podcasts",
-          "meditation",
-          "movies",
-          "board games",
-          "astronomy",
-          "bird watching",
-          "coding",
-          "street art",
-          "skateboarding",
-          "brewing",
-          "jazz music",
-          "karaoke",
-          "rock climbing",
-        ],
-        DE: [
-          "Sport",
-          "Musik",
-          "Filme",
-          "Technologie",
-          "Reisen",
-          "Essen",
-          "Spiele",
-          "Literatur",
-          "Autos",
-          "Kunst",
-          "Fotografie",
-          "Fitness",
-          "Mode",
-          "Geschichte",
-          "Wissenschaft",
-          "Theater",
-          "Gartenarbeit",
-          "Bildung",
-          "Comedy",
-          "Radfahren",
-          "Umwelt",
-          "Politik",
-          "Gesundheit",
-          "Yoga",
-          "Finanzen",
-          "Weltraum",
-          "Kaffee",
-          "Handwerk",
-          "Haustiere",
-          "Laufen",
-          "Wandern",
-          "Tanzen",
-          "Strand",
-          "Motorräder",
-          "Freiwilligenarbeit",
-          "Architektur",
-          "Sprachen",
-          "Gaming",
-          "Schreiben",
-          "Podcasts",
-          "Meditation",
-          "Filme",
-          "Brettspiele",
-          "Astronomie",
-          "Vogelbeobachtung",
-          "Programmieren",
-          "Street Art",
-          "Skateboarden",
-          "Brauen",
-          "Jazzmusik",
-          "Karaoke",
-          "Klettern",
-        ],
-        ES: [
-          "deportes",
-          "música",
-          "películas",
-          "tecnología",
-          "viajes",
-          "comida",
-          "juegos",
-          "literatura",
-          "coches",
-          "arte",
-          "fotografía",
-          "fitness",
-          "moda",
-          "historia",
-          "ciencia",
-          "teatro",
-          "jardinería",
-          "educación",
-          "comedia",
-          "ciclismo",
-          "medio ambiente",
-          "política",
-          "salud",
-          "yoga",
-          "finanzas",
-          "espacio",
-          "café",
-          "manualidades",
-          "mascotas",
-          "correr",
-          "senderismo",
-          "baile",
-          "playa",
-          "motos",
-          "voluntariado",
-          "arquitectura",
-          "idiomas",
-          "juegos",
-          "escritura",
-          "podcasts",
-          "meditación",
-          "películas",
-          "juegos de mesa",
-          "astronomía",
-          "observación de aves",
-          "programación",
-          "arte callejero",
-          "patinaje",
-          "cerveza artesanal",
-          "música jazz",
-          "karaoke",
-          "escalada",
-        ],
-        IE: [
-          "sports",
-          "music",
-          "movies",
-          "technology",
-          "travel",
-          "food",
-          "gaming",
-          "literature",
-          "cars",
-          "art",
-          "photography",
-          "fitness",
-          "fashion",
-          "history",
-          "science",
-          "theatre",
-          "gardening",
-          "education",
-          "comedy",
-          "cycling",
-          "environment",
-          "politics",
-          "health",
-          "yoga",
-          "finance",
-          "space",
-          "coffee",
-          "crafts",
-          "pets",
-          "running",
-          "hiking",
-          "dancing",
-          "beach",
-          "motorbikes",
-          "volunteering",
-          "architecture",
-          "languages",
-          "gaming",
-          "writing",
-          "podcasts",
-          "meditation",
-          "films",
-          "board games",
-          "astronomy",
-          "bird watching",
-          "coding",
-          "street art",
-          "skateboarding",
-          "brewing",
-          "jazz music",
-          "karaoke",
-          "rock climbing",
-        ],
-      };
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg class="footer-logo-icon" role="img">
+                            <rect x="2" y="2" width="20" height="20" rx="4" fill="#6366f1"/>
+                            <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="footer-brand-text">FinanceWise</span>
+                    </div>
+                    <p class="footer-description">Empowering financial literacy and business growth for a better future.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-group">
+                        <h4 class="footer-title">About Product</h4>
+                        <ul class="footer-menu">
+                            <li><a href="/about.html">About Us</a></li>
+                            <li><a href="/services.html">Services</a></li>
+                            <li><a href="/blog/">Blog</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-group">
+                        <h4 class="footer-title">Company</h4>
+                        <ul class="footer-menu">
+                            <li><a href="/about.html">Our Story</a></li>
+                            <li><a href="/blog/">Blog</a></li>
+                            <li><a href="/contact.html">Careers</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-group">
+                        <h4 class="footer-title">Support</h4>
+                        <ul class="footer-menu">
+                            <li><a href="/contact.html">Help Center</a></li>
+                            <li><a href="/contact.html">Account Information</a></li>
+                            <li><a href="/contact.html">Early Access</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4 class="footer-title">Stay Updated</h4>
+                    <form class="newsletter-form" onsubmit="return false;">
+                        <input type="email" placeholder="Your email address" class="newsletter-input">
+                        <button type="submit" class="btn btn-primary">Get Early Access</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-legal">© 2025 FinanceWise • <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a> • Registered in AU • Operating remotely from Sydney, Australia. Physical address available on request.</p>
+            </div>
+        </div>
+    </footer>
 
-      const geoInterests = {
-        UK: [
-          "football",
-          "cricket",
-          "chess",
-          "golf",
-          "pub culture",
-          "rugby",
-          "tennis",
-          "cycling",
-          "horse racing",
-          "rowing",
-          "boxing",
-          "snooker",
-          "badminton",
-          "netball",
-          "sailing",
-          "fishing",
-          "hiking",
-          "archery",
-          "motor racing",
-          "lawn bowls",
-          "field hockey",
-          "darts",
-          "swimming",
-          "basketball",
-          "rugby league",
-          "mountaineering",
-          "bird watching",
-          "surfing",
-          "kayaking",
-          "ice skating",
-          "marathons",
-          "dog shows",
-          "music festivals",
-          "theatre festivals",
-          "literature festivals",
-          "food festivals",
-          "beer festivals",
-          "film festivals",
-          "gardening shows",
-          "historical reenactments",
-          "comic cons",
-          "street fairs",
-          "cycling races",
-          "dance clubs",
-          "pub quizzes",
-          "quiz nights",
-          "open mic nights",
-          "community theatre",
-          "volunteering",
-          "charity runs",
-          "farmers markets",
-        ],
-        DE: [
-          "Fußball",
-          "Bier",
-          "Autos",
-          "Technologie",
-          "Radsport",
-          "Schwimmen",
-          "Wandern",
-          "Tennis",
-          "Handball",
-          "Basketball",
-          "Segeln",
-          "Skifahren",
-          "Langlauf",
-          "Boxen",
-          "Golf",
-          "Klettern",
-          "Reiten",
-          "Motorsport",
-          "Angeln",
-          "Jagen",
-          "Tischtennis",
-          "Volleyball",
-          "Leichtathletik",
-          "Turnen",
-          "Fechten",
-          "Yoga",
-          "Pilates",
-          "Theater",
-          "Musikfestivals",
-          "Kunstmessen",
-          "Filmfestivals",
-          "Bierfeste",
-          "Weinfeste",
-          "Volksfeste",
-          "Weihnachtsmärkte",
-          "Kochshows",
-          "Buchclubs",
-          "Spieleabende",
-          "Straßenfeste",
-          "Tanzveranstaltungen",
-          "Karaoke",
-          "Quiznächte",
-          "Open Mic",
-          "Tanzclubs",
-          "Gemeinschaftsprojekte",
-          "Wohltätigkeitsläufe",
-          "Bauernmärkte",
-          "Umweltschutz",
-          "Freiwilligenarbeit",
-        ],
-        ES: [
-          "fútbol",
-          "corrida de toros",
-          "playa",
-          "flamenco",
-          "vinicultura",
-          "senderismo",
-          "surf",
-          "ciclismo",
-          "natación",
-          "esquí",
-          "baloncesto",
-          "tenis",
-          "motociclismo",
-          "atletismo",
-          "boxeo",
-          "golf",
-          "caza",
-          "pesca",
-          "voleibol",
-          "yoga",
-          "pilates",
-          "teatro",
-          "festivales de música",
-          "ferias de arte",
-          "festivales de cine",
-          "ferias gastronómicas",
-          "ferias del vino",
-          "fiestas populares",
-          "mercados navideños",
-          "clubes de lectura",
-          "noches de juegos",
-          "fiestas callejeras",
-          "eventos de baile",
-          "karaoke",
-          "noches de trivia",
-          "micrófono abierto",
-          "clubes de baile",
-          "proyectos comunitarios",
-          "carreras benéficas",
-          "mercados de agricultores",
-          "protección ambiental",
-          "voluntariado",
-        ],
-        IE: [
-          "football",
-          "rugby",
-          "pub culture",
-          "traditional music",
-          "hurling",
-          "cycling",
-          "fishing",
-          "rowing",
-          "horse racing",
-          "golf",
-          "boxing",
-          "swimming",
-          "athletics",
-          "hiking",
-          "dancing",
-          "tennis",
-          "badminton",
-          "running",
-          "kayaking",
-          "mountaineering",
-          "bird watching",
-          "marathons",
-          "music festivals",
-          "theatre festivals",
-          "literature festivals",
-          "food festivals",
-          "beer festivals",
-          "film festivals",
-          "gardening shows",
-          "historical reenactments",
-          "comic cons",
-          "street fairs",
-          "cycling races",
-          "pub quizzes",
-          "quiz nights",
-          "open mic nights",
-          "community theatre",
-          "volunteering",
-          "charity runs",
-          "farmers markets",
-        ],
-      };
-
-      // Добавил много сайтов для ES и IE (около 50+), UK и DE тоже расширил для баланса
-      const geoSites = {
-        UK: [
-          "https://www.bbc.co.uk",
-          "https://www.theguardian.com/uk",
-          "https://www.telegraph.co.uk",
-          "https://www.dailymail.co.uk",
-          "https://www.britishairways.com",
-          "https://www.nationalrail.co.uk",
-          "https://www.bbc.co.uk/sport",
-          "https://www.sky.com",
-          "https://www.ebay.co.uk",
-          "https://www.amazon.co.uk",
-          "https://www.tesco.com",
-          "https://www.sainsburys.co.uk",
-          "https://www.marksandspencer.com",
-          "https://www.next.co.uk",
-          "https://www.argos.co.uk",
-          "https://www.britishmuseum.org",
-          "https://www.visitbritain.com",
-          "https://www.london.gov.uk",
-          "https://www.gov.uk",
-          "https://www.netflix.com/gb",
-          "https://www.bbcgoodfood.com",
-          "https://www.timeout.com/london",
-          "https://www.nhm.ac.uk",
-          "https://www.nationalgallery.org.uk",
-          "https://www.lse.ac.uk",
-          "https://www.openuniversity.co.uk",
-          "https://www.royalparks.org.uk",
-          "https://www.nationaltrust.org.uk",
-          "https://www.waterstones.com",
-          "https://www.tate.org.uk",
-          "https://www.bfi.org.uk",
-          "https://www.timeout.com",
-          "https://www.discoverwildlife.com",
-          "https://www.londonstockexchange.com",
-          "https://www.cityoflondon.gov.uk",
-          "https://www.visitlondon.com",
-          "https://www.english-heritage.org.uk",
-          "https://www.westendtheatre.com",
-          "https://www.broadway.com",
-          "https://www.seatwave.com",
-          "https://www.timeout.com/uk/music",
-          "https://www.royalalberthall.com",
-          "https://www.nationaltheatre.org.uk",
-          "https://www.sadiq.london",
-        ],
-        DE: [
-          "https://www.spiegel.de",
-          "https://www.tagesschau.de",
-          "https://www.bundeswehr.de",
-          "https://www.bundesliga.com",
-          "https://www.vfl-wolfsburg.de",
-          "https://www.bvb.de",
-          "https://www.fc-bayern.com",
-          "https://www.karstadt.de",
-          "https://www.baur.de",
-          "https://www.thomann.de",
-          "https://www.kaufland.de",
-          "https://www.lidl.de",
-          "https://www.aldi.de",
-          "https://www.dm.de",
-          "https://www.rossmann.de",
-          "https://www.ebay-kleinanzeigen.de",
-          "https://www.ebay.de",
-          "https://www.amazon.de",
-          "https://www.zalando.de",
-          "https://www.mediamarkt.de",
-          "https://www.saturn.de",
-          "https://www.t-online.de",
-          "https://www.welt.de",
-          "https://www.zeit.de",
-          "https://www.deutschebahn.com",
-          "https://www.kicker.de",
-          "https://www.bahn.de",
-          "https://www.lufthansa.com",
-          "https://www.adac.de",
-          "https://www.bundestag.de",
-          "https://www.dw.com",
-          "https://www.ard.de",
-          "https://www.rbb-online.de",
-          "https://www.swr.de",
-          "https://www.hr.de",
-          "https://www.bayerischer-rundfunk.de",
-          "https://www.mdr.de",
-          "https://www.ndr.de",
-          "https://www.zdf.de",
-          "https://www.prosieben.de",
-          "https://www.vox.de",
-          "https://www.sat1.de",
-          "https://www.t-online.de",
-          "https://www.chefkoch.de",
-        ],
-        ES: [
-          "https://www.elpais.com",
-          "https://www.marca.com",
-          "https://www.laliga.com",
-          "https://www.rtve.es",
-          "https://www.abc.es",
-          "https://www.elmundo.es",
-          "https://www.telecinco.es",
-          "https://www.cadenaser.com",
-          "https://www.lavozdegalicia.es",
-          "https://www.larazon.es",
-          "https://www.expansion.com",
-          "https://www.20minutos.es",
-          "https://www.elconfidencial.com",
-          "https://www.publico.es",
-          "https://www.cuatro.com",
-          "https://www.antena3.com",
-          "https://www.bilbaointernational.com",
-          "https://www.idealista.com",
-          "https://www.ebay.es",
-          "https://www.amazon.es",
-          "https://www.booking.com",
-          "https://www.airbnb.es",
-          "https://www.renfe.com",
-          "https://www.iberia.com",
-          "https://www.telefonica.com",
-          "https://www.movistar.es",
-          "https://www.orange.es",
-          "https://www.vodafone.es",
-          "https://www.carrefour.es",
-          "https://www.elcorteingles.es",
-          "https://www.mediamarkt.es",
-          "https://www.pccomponentes.com",
-          "https://www.lidl.es",
-          "https://www.aldi.es",
-          "https://www.mercadona.es",
-          "https://www.dia.es",
-          "https://www.wallapop.com",
-          "https://www.tuenti.com",
-          "https://www.bonpreu.com",
-          "https://www.zara.com/es",
-          "https://www.pullandbear.com/es",
-          "https://www.mango.com/es",
-          "https://www.massimodutti.com/es",
-          "https://www.stradivarius.com/es",
-          "https://www.bershka.com/es",
-          "https://www.holidaycheck.es",
-          "https://www.tripadvisor.es",
-          "https://www.cuevasdeandalucia.es",
-          "https://www.paradores.es",
-          "https://www.spain.info",
-          "https://www.renfe.com",
-          "https://www.correos.es",
-          "https://www.marca.com",
-          "https://www.elpais.com",
-          "https://www.elmundo.es",
-          "https://www.20minutos.es",
-          "https://www.abc.es",
-          "https://www.elconfidencial.com",
-          "https://www.publico.es",
-          "https://www.rtve.es",
-          "https://www.antena3.com",
-          "https://www.cadenaser.com",
-          "https://www.telecinco.es",
-          "https://www.europapress.es",
-          "https://www.larazon.es",
-          "https://www.europapress.es",
-          "https://www.rtve.es",
-          "https://www.cuatro.com",
-          "https://www.elperiodico.com",
-        ],
-        IE: [
-          "https://www.rte.ie",
-          "https://www.irishtimes.com",
-          "https://www.irishmirror.ie",
-          "https://www.irishexaminer.com",
-          "https://www.breakingnews.ie",
-          "https://www.irishcentral.com",
-          "https://www.independent.ie",
-          "https://www.ireland.com",
-          "https://www.gaa.ie",
-          "https://www.rte.ie/sport",
-          "https://www.sky.com/ireland",
-          "https://www.met.ie",
-          "https://www.tesco.ie",
-          "https://www.dunnesstores.com",
-          "https://www.supervalu.ie",
-          "https://www.mcdonalds.ie",
-          "https://www.ebay.ie",
-          "https://www.amazon.co.uk",
-          "https://www.booking.com",
-          "https://www.airbnb.ie",
-          "https://www.ryanair.com",
-          "https://www.aerlingus.com",
-          "https://www.cityjet.com",
-          "https://www.virginatlantic.com",
-          "https://www.facebook.com",
-          "https://www.twitter.com",
-          "https://www.instagram.com",
-          "https://www.linkedin.com",
-          "https://www.snapchat.com",
-          "https://www.tiktok.com",
-          "https://www.netflix.com",
-          "https://www.spotify.com",
-          "https://www.discord.com",
-          "https://www.twitch.tv",
-          "https://www.reddit.com",
-          "https://www.stackoverflow.com",
-          "https://www.medium.com",
-          "https://www.github.com",
-          "https://www.heroku.com",
-          "https://www.digitalocean.com",
-          "https://www.shopify.com",
-          "https://www.etsy.com",
-          "https://www.zara.com/ie",
-          "https://www.hm.com/ie",
-          "https://www.next.ie",
-          "https://www.topshop.com",
-          "https://www.houseoffraser.co.uk",
-          "https://www.selfridges.com",
-          "https://www.liberty.co.uk",
-          "https://www.harrods.com",
-          "https://www.willowandhall.co.uk",
-          "https://www.britishairways.com",
-          "https://www.visitdublin.com",
-          "https://www.ireland.ie",
-          "https://www.discoverireland.ie",
-          "https://www.citizensinformation.ie",
-          "https://www.finegael.ie",
-          "https://www.labour.ie",
-          "https://www.sinnfein.ie",
-          "https://www.greenparty.ie",
-          "https://www.dublinairport.com",
-          "https://www.translink.co.uk",
-        ],
-      };
-
-      const geoYouTubeSearches = {
-        UK: [
-          "UK football highlights",
-          "British cooking recipes",
-          "London travel vlog",
-          "UK news today",
-          "British history documentary",
-          "Premier League goals",
-          "UK politics analysis",
-          "English literature summaries",
-          "UK tech reviews",
-          "British comedy shows",
-          "UK music charts",
-          "British wildlife videos",
-          "UK fashion trends",
-          "London underground tips",
-          "British festivals 2024",
-          "UK car reviews",
-          "British garden ideas",
-          "UK football tactics",
-          "British weather forecast",
-          "UK shopping haul",
-          "British food recipes",
-          "UK travel guide",
-          "British culture explained",
-          "UK documentary history",
-          "British music live",
-          "UK stand-up comedy",
-          "British wildlife safari",
-          "UK football interviews",
-          "British film trailers",
-          "UK university tips",
-          "British art tutorials",
-          "UK language lessons",
-          "British pub culture",
-          "UK hiking trails",
-          "British sports news",
-          "UK Christmas traditions",
-          "British football training",
-          "UK food vlogs",
-          "British dance videos",
-          "UK business news",
-          "British classic movies",
-          "UK cooking shows",
-          "British architecture tours",
-          "UK cycling routes",
-          "British gardening tips",
-          "UK car maintenance",
-          "British TV drama",
-          "UK cricket highlights",
-          "British travel tips",
-          "UK fishing videos",
-          "British poetry readings",
-          "UK pub quiz",
-          "British music festivals",
-        ],
-        DE: [
-          "Deutsche Fußball Bundesliga",
-          "Deutsch kochen Rezepte",
-          "Berlin Reise Vlog",
-          "Deutschland Nachrichten heute",
-          "Deutsche Geschichte Dokumentation",
-          "Bundesliga Tore",
-          "Politik Deutschland Analyse",
-          "Deutsche Literatur Zusammenfassungen",
-          "Technik Reviews DE",
-          "Deutsche Comedy Shows",
-          "Musik Charts Deutschland",
-          "Deutsche Tierwelt Videos",
-          "Mode Trends DE",
-          "Berlin U-Bahn Tipps",
-          "Deutsche Festivals 2024",
-          "Auto Tests Deutschland",
-          "Garten Ideen DE",
-          "Fußball Taktiken DE",
-          "Wettervorhersage Deutschland",
-          "Shopping Haul DE",
-          "Deutsche Kochrezepte",
-          "Reiseführer Deutschland",
-          "Kultur Deutschland erklärt",
-          "Dokumentation Geschichte DE",
-          "Live Musik Deutschland",
-          "Stand-Up Comedy DE",
-          "Tierwelt Safari DE",
-          "Fußball Interviews DE",
-          "Film Trailer Deutschland",
-          "Uni Tipps DE",
-          "Kunst Tutorials DE",
-          "Sprachkurse Deutsch",
-          "Pub Kultur Deutschland",
-          "Wandern Deutschland",
-          "Sport Nachrichten DE",
-          "Weihnachten Traditionen DE",
-          "Fußball Training DE",
-          "Food Vlogs DE",
-          "Tanzvideos Deutschland",
-          "Wirtschaft Nachrichten DE",
-          "Klassische Filme DE",
-          "Kochshows Deutschland",
-          "Architektur Tour DE",
-          "Fahrrad Routen DE",
-          "Garten Tipps DE",
-          "Auto Wartung DE",
-          "TV Drama Deutschland",
-          "Cricket Highlights DE",
-          "Reisetipps Deutschland",
-          "Angeln Videos DE",
-          "Poesie Lesungen DE",
-          "Pub Quiz Deutschland",
-          "Musik Festivals DE",
-        ],
-        ES: [
-          "Fútbol español highlights",
-          "Recetas de cocina española",
-          "Vlog de viajes España",
-          "Noticias España hoy",
-          "Documental historia España",
-          "La Liga goles",
-          "Análisis política España",
-          "Resumen literatura española",
-          "Reseñas tecnología España",
-          "Shows de comedia España",
-          "Top música España",
-          "Videos fauna española",
-          "Tendencias moda España",
-          "Consejos transporte Madrid",
-          "Festivales España 2024",
-          "Reseñas coches España",
-          "Ideas para jardines España",
-          "Tácticas fútbol España",
-          "Pronóstico clima España",
-          "Compras haul España",
-          "Recetas de comida España",
-          "Guía viajes España",
-          "Cultura española explicada",
-          "Documental historia España",
-          "Música en vivo España",
-          "Comedia stand-up España",
-          "Safari fauna España",
-          "Entrevistas fútbol España",
-          "Tráilers películas España",
-          "Consejos universidad España",
-          "Tutoriales arte España",
-          "Lecciones de idioma español",
-          "Cultura pub España",
-          "Rutas senderismo España",
-          "Noticias deportes España",
-          "Tradiciones navideñas España",
-          "Entrenamiento fútbol España",
-          "Vlogs comida España",
-          "Videos baile España",
-          "Noticias negocios España",
-          "Películas clásicas España",
-          "Shows cocina España",
-          "Tours arquitectura España",
-          "Rutas ciclismo España",
-          "Consejos jardinería España",
-          "Mantenimiento coches España",
-          "Drama TV España",
-          "Cricket resúmenes España",
-          "Consejos viajes España",
-          "Videos pesca España",
-          "Lecturas poesía España",
-          "Quiz pub España",
-          "Festivales música España",
-        ],
-        IE: [
-          "Irish football highlights",
-          "Irish recipes cooking",
-          "Dublin travel vlog",
-          "Ireland news today",
-          "Irish history documentary",
-          "League of Ireland goals",
-          "Irish politics analysis",
-          "Irish literature summaries",
-          "Irish tech reviews",
-          "Irish comedy shows",
-          "Irish music charts",
-          "Irish wildlife videos",
-          "Irish fashion trends",
-          "Dublin transport tips",
-          "Irish festivals 2024",
-          "Irish car reviews",
-          "Irish garden ideas",
-          "Irish football tactics",
-          "Irish weather forecast",
-          "Irish shopping haul",
-          "Irish food recipes",
-          "Ireland travel guide",
-          "Irish culture explained",
-          "Irish history documentary",
-          "Irish live music",
-          "Irish stand-up comedy",
-          "Irish wildlife safari",
-          "Irish football interviews",
-          "Irish film trailers",
-          "Irish university tips",
-          "Irish art tutorials",
-          "Irish language lessons",
-          "Irish pub culture",
-          "Irish hiking trails",
-          "Irish sports news",
-          "Irish Christmas traditions",
-          "Irish football training",
-          "Irish food vlogs",
-          "Irish dance videos",
-          "Irish business news",
-          "Irish classic movies",
-          "Irish cooking shows",
-          "Irish architecture tours",
-          "Irish cycling routes",
-          "Irish gardening tips",
-          "Irish car maintenance",
-          "Irish TV drama",
-          "Irish cricket highlights",
-          "Irish travel tips",
-          "Irish fishing videos",
-          "Irish poetry readings",
-          "Irish pub quiz",
-          "Irish music festivals",
-        ],
-      };
-
-      const steps = {
-        1: "Веб-серфинг: Посещение популярных и релевантных сайтов, просмотр видео и чтение статей по интересам.",
-        2: "Gmail + Регистрации: Создание почты, регистрация на ключевых сервисах с валидными логинами и паролями.",
-        3: "Прогрев и активность: Активное использование аккаунтов, создание контента, запуск рекламных кампаний.",
-      };
-
-      function getRandom(arr) {
-        return arr[Math.floor(Math.random() * arr.length)];
-      }
-
-      function generateName(geo) {
-        const gender = Math.random() > 0.5 ? "male" : "female";
-        const firstName = getRandom(names[geo][gender]);
-        const lastName = getRandom([
-          "Smith",
-          "Johnson",
-          "Williams",
-          "Brown",
-          "Jones",
-          "Miller",
-          "Davis",
-          "Garcia",
-          "Martinez",
-          "Wilson",
-        ]);
-        return `${firstName} ${lastName}`;
-      }
-
-      function generateInterests(geo) {
-        const base = [...commonInterests[geo]];
-        const local = geoInterests[geo];
-        for (let i = 0; i < 3; i++) {
-          base.push(getRandom(local));
-        }
-        return base.sort(() => Math.random() - 0.5).slice(0, 6);
-      }
-
-      const registrationSites = [
-  "https://twitter.com",
-  "https://www.reddit.com",
-  "https://www.tumblr.com",
-  "https://www.pinterest.com",
-  "https://www.quora.com",
-  "https://www.facebook.com",
-  "https://medium.com",
-  "https://disqus.com",
-  "https://www.producthunt.com",
-  "https://www.linkedin.com",
-  "https://www.instagram.com",
-  "https://www.tiktok.com",
-  "https://www.snapchat.com",
-  "https://www.github.com",
-  "https://www.gitlab.com",
-  "https://dribbble.com",
-  "https://www.behance.net",
-  "https://stackoverflow.com",
-  "https://hubpages.com",
-  "https://www.slideshare.net",
-  "https://www.soundcloud.com",
-  "https://bandcamp.com",
-  "https://www.mixcloud.com",
-  "https://www.vimeo.com",
-  "https://www.twitch.tv",
-  "https://www.goodreads.com",
-  "https://letterboxd.com",
-  "https://www.last.fm",
-  "https://www.flickr.com",
-  "https://500px.com",
-  "https://www.yelp.com",
-  "https://www.tripadvisor.com",
-  "https://www.trello.com",
-  "https://www.notion.so",
-  "https://www.slack.com",
-  "https://www.discord.com",
-  "https://www.meetup.com"
-];
-
-function generateScript(geo, step) {
-  const name = generateName(geo);
-  const interests = generateInterests(geo).join(", ");
-  const stepDescription = steps[step];
-  const sites = geoSites[geo];
-  const sampleSites = [];
-  const shuffledSites = sites.sort(() => Math.random() - 0.5);
-  for (let i = 0; i < 5; i++) sampleSites.push(shuffledSites[i]);
-
-  let youtubePart = "";
-  if (step === "3") {
-    const searches = geoYouTubeSearches[geo];
-    const sampleSearches = [];
-    const shuffledSearches = searches.sort(() => Math.random() - 0.5);
-    for (let i = 0; i < 3 && i < searches.length; i++)
-      sampleSearches.push(shuffledSearches[i]);
-    youtubePart = `
-Просмотр видео на YouTube по интересующим темам:
-${sampleSearches.map((s) => "- " + s).join("\n")}
-    `.trim();
-  }
-
-  let registrationPart = "";
-  if (step === "2") {
-    const sampleRegs = registrationSites.sort(() => Math.random() - 0.5).slice(0, 5);
-    registrationPart = `
-Рекомендуемые сайты для регистрации:
-${sampleRegs.map((s) => "- " + s).join("\n")}
-    `.trim();
-  }
-
-  const script = `
-# Сценарий фарма - Гео: ${geo}, Этап: ${step}
-
-Имя персонажа: ${name}
-
-Интересы персонажа: ${interests}
-
-Этап: ${stepDescription}
-
-Рекомендуемые сайты для посещения:
-${sampleSites.map((s) => "- " + s).join("\n")}
-
-${registrationPart ? registrationPart + "\n" : ""}
-${youtubePart ? youtubePart + "\n" : ""}---
-Используйте данные рекомендации для эффективного фарма с учётом гео и этапа процесса.
-  `.trim();
-
-  return script;
-}
-
-<!-- 32 -->
-      function generate() {
-        const geo = document.getElementById("geo").value;
-        const step = document.getElementById("step").value;
-        const script = generateScript(geo, step);
-        const resultDiv = document.getElementById("result");
-
-        resultDiv.innerHTML = `
-      <pre id="scriptContent">${script}</pre>
-      <button class="copy" onclick="copyScript()">📋 Копировать сценарий</button>
-    `;
-      }
-
-      function copyScript() {
-        const scriptText = document.getElementById("scriptContent").textContent;
-        navigator.clipboard.writeText(scriptText).then(
-          () => {
-            alert("Сценарий скопирован в буфер обмена!");
-          },
-          () => {
-            alert("Ошибка при копировании. Попробуйте вручную.");
-          }
-        );
-      }
-    </script>
-  </body>
+    <script src="/assets/js/main.js"></script>
+</body>
 </html>

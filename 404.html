@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - FinanceWise</title>
+    <meta name="description" content="The page you're looking for doesn't exist. Return to FinanceWise homepage to continue your financial education journey.">
+    <link rel="canonical" href="/404.html">
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Page Not Found - FinanceWise">
+    <meta property="og:description" content="The page you're looking for doesn't exist. Return to FinanceWise to continue your financial education journey.">
+    <meta property="og:url" content="/404.html">
+    <meta property="og:type" content="website">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <style>
+        .error-content {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: calc(64px + var(--space-12)) var(--space-4) var(--space-12);
+        }
+        
+        .error-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: var(--space-4);
+        }
+        
+        .error-title {
+            font-size: var(--font-size-4xl);
+            font-weight: 800;
+            margin-bottom: var(--space-6);
+            color: var(--gray-900);
+        }
+        
+        .error-description {
+            font-size: var(--font-size-lg);
+            color: var(--gray-600);
+            margin-bottom: var(--space-8);
+            line-height: var(--line-height-loose);
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: var(--space-12);
+        }
+        
+        .error-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin-top: var(--space-8);
+        }
+        
+        .error-link-card {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .error-link-card:hover {
+            background: var(--white);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        .error-link-title {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: var(--space-2);
+        }
+        
+        .error-link-description {
+            color: var(--gray-600);
+            font-size: var(--font-size-sm);
+            margin: 0;
+        }
+        
+        .error-illustration {
+            margin-bottom: var(--space-8);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-brand">
+                <svg class="nav-logo" role="img" aria-labelledby="logo-title">
+                    <title id="logo-title">FinanceWise Logo</title>
+                    <rect x="2" y="2" width="20" height="20" rx="4" fill="#6366f1"/>
+                    <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="nav-brand-text">FinanceWise</span>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/about.html" class="nav-link">About</a></li>
+                <li><a href="/services.html" class="nav-link">Services</a></li>
+                <li><a href="/blog/" class="nav-link">Blog</a></li>
+                <li><a href="/contact.html" class="nav-link">Contact</a></li>
+                <li><a href="/contact.html" class="btn btn-primary nav-cta">Get Started</a></li>
+            </ul>
+            
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="error-content">
+            <div class="error-container">
+                <div class="error-illustration">
+                    <svg width="200" height="150" viewBox="0 0 200 150" role="img" aria-labelledby="error-illustration-title">
+                        <title id="error-illustration-title">Page Not Found Illustration</title>
+                        <rect width="200" height="150" fill="none"/>
+                        
+                        <!-- Broken calculator/document -->
+                        <rect x="50" y="30" width="100" height="80" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+                        <rect x="60" y="40" width="80" height="15" rx="4" fill="#fee2e2"/>
+                        <text x="100" y="52" text-anchor="middle" font-size="10" fill="#ef4444" font-weight="600">ERROR</text>
+                        
+                        <!-- X mark -->
+                        <path d="M75 70 L85 80 M85 70 L75 80" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M115 70 L125 80 M125 70 L115 80" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+                        
+                        <!-- Question marks floating around -->
+                        <text x="30" y="50" font-size="20" fill="#6366f1" opacity="0.6">?</text>
+                        <text x="170" y="70" font-size="16" fill="#6366f1" opacity="0.4">?</text>
+                        <text x="40" y="120" font-size="14" fill="#6366f1" opacity="0.5">?</text>
+                        <text x="160" y="110" font-size="18" fill="#6366f1" opacity="0.7">?</text>
+                    </svg>
+                </div>
+                
+                <div class="error-code">404</div>
+                <h1 class="error-title">Page Not Found</h1>
+                <p class="error-description">The page you're looking for doesn't exist or has been moved. Don't worry, we'll help you get back on track with your financial education journey.</p>
+                
+                <div class="error-actions">
+                    <a href="/" class="btn btn-primary btn-large">Return Home</a>
+                    <a href="/contact.html" class="btn btn-outline btn-large">Get Help</a>
+                </div>
+                
+                <div class="error-links">
+                    <a href="/blog/" class="error-link-card">
+                        <h3 class="error-link-title">Financial Blog</h3>
+                        <p class="error-link-description">Explore our latest articles on budgeting, investing, and financial planning</p>
+                    </a>
+                    
+                    <a href="/services.html" class="error-link-card">
+                        <h3 class="error-link-title">Our Services</h3>
+                        <p class="error-link-description">Discover comprehensive financial education and planning services</p>
+                    </a>
+                    
+                    <a href="/about.html" class="error-link-card">
+                        <h3 class="error-link-title">About Us</h3>
+                        <p class="error-link-description">Learn about our mission to democratize financial education</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg class="footer-logo-icon" role="img">
+                            <rect x="2" y="2" width="20" height="20" rx="4" fill="#6366f1"/>
+                            <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="footer-brand-text">FinanceWise</span>
+                    </div>
+                    <p class="footer-description">Empowering financial literacy and business growth for a better future.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-group">
+                        <h4 class="footer-title">About Product</h4>
+                        <ul class="footer-menu">
+                            <li><a href="/about.html">About Us</a></li>
+                            <li><a href="/services.html">Services</a></li>
+                            <li><a href="/blog/">Blog</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-group">
+                        <h4 class="footer-title">Company</h4>
+                        <ul class="footer-menu">
+                            <li><a href="/about.html">Our Story</a></li>
+                            <li><a href="/blog/">Blog</a></li>
+                            <li><a href="/contact.html">Careers</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-group">
+                        <h4 class="footer-title">Support</h4>
+                        <ul class="footer-menu">
+                            <li><a href="/contact.html">Help Center</a></li>
+                            <li><a href="/contact.html">Account Information</a></li>
+                            <li><a href="/contact.html">Early Access</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4 class="footer-title">Stay Updated</h4>
+                    <form class="newsletter-form" onsubmit="return false;">
+                        <input type="email" placeholder="Your email address" class="newsletter-input">
+                        <button type="submit" class="btn btn-primary">Get Early Access</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-legal">© 2025 FinanceWise • <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a> • Registered in AU • Operating remotely from Sydney, Australia. Physical address available on request.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

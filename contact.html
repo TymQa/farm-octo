@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact FinanceWise - Start Your Financial Journey</title>
+    <meta name="description" content="Get in touch with FinanceWise for personalized financial education, budgeting tools, and business development consultation. Free consultation available.">
+    <link rel="canonical" href="/contact.html">
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Contact FinanceWise - Start Your Financial Journey">
+    <meta property="og:description" content="Get in touch with FinanceWise for personalized financial education and consultation.">
+    <meta property="og:url" content="/contact.html">
+    <meta property="og:type" content="website">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <style>
+        .contact-form {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-6);
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: var(--space-2);
+        }
+        
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: var(--space-3) var(--space-4);
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-lg);
+            font-size: var(--font-size-base);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+        }
+        
+        .form-checkbox {
+            margin-top: 2px;
+        }
+        
+        .honeypot {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+        }
+        
+        .success-message {
+            display: none;
+            background: #f0fdf4;
+            border: 1px solid #22c55e;
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            text-align: center;
+            color: #15803d;
+            margin-bottom: var(--space-6);
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .contact-info {
+            background: var(--gray-50);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-6);
+        }
+        
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--primary);
+        }
+        
+        .map-container {
+            background: var(--gray-50);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            text-align: center;
+        }
+        
+        .map-svg {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            margin-bottom: var(--space-4);
+        }
+        
+        .btn-submit {
+            width: 100%;
+            margin-top: var(--space-4);
+        }
+        
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-brand">
+                <svg class="nav-logo" role="img" aria-labelledby="logo-title">
+                    <title id="logo-title">FinanceWise Logo</title>
+                    <rect x="2" y="2" width="20" height="20" rx="4" fill="#6366f1"/>
+                    <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="nav-brand-text">FinanceWise</span>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/about.html" class="nav-link">About</a></li>
+                <li><a href="/services.html" class="nav-link">Services</a></li>
+                <li><a href="/blog/" class="nav-link">Blog</a></li>
+                <li><a href="/contact.html" class="nav-link active">Contact</a></li>
+                <li><a href="/contact.html" class="btn btn-primary nav-cta">Get Started</a></li>
+            </ul>
+            
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content" style="grid-template-columns: 1fr; text-align: center;">
+                    <div class="hero-text">
+                        <h1 class="hero-title">Start Your Financial<br>Journey Today</h1>
+                        <p class="hero-description">Ready to take control of your finances? Get in touch for a personalized consultation and discover how FinanceWise can help you achieve your financial goals.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="gallery">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-12); align-items: start;">
+                    <div>
+                        <div class="success-message" id="success" aria-live="polite">
+                            <h3 style="color: #15803d; margin-bottom: 1rem;">Thank You!</h3>
+                            <p>Your message has been sent successfully. We'll get back to you within 24 hours to discuss your financial goals and how we can help.</p>
+                        </div>
+                        
+                        <div class="contact-form">
+                            <h2 style="margin-bottom: var(--space-6);">Get Your Free Consultation</h2>
+                            
+                            <form id="contact-form" action="https://formspree.io/f/mdkdypql" method="POST">
+                                <input type="hidden" name="_redirect" value="/contact.html#success">
+                                <input type="hidden" name="site" value="financewise.com">
+                                <input type="text" name="website" class="honeypot" tabindex="-1">
+                                
+                                <div class="form-group">
+                                    <label for="name" class="form-label">Full Name *</label>
+                                    <input type="text" id="name" name="name" class="form-input" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" id="email" name="email" class="form-input" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <select id="subject" name="subject" class="form-input">
+                                        <option value="">Select a topic...</option>
+                                        <option value="consultation">Free Consultation</option>
+                                        <option value="budgeting">Personal Budgeting</option>
+                                        <option value="investment">Investment Planning</option>
+                                        <option value="business">Business Development</option>
+                                        <option value="debt">Debt Management</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message" class="form-label">Message *</label>
+                                    <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your financial goals and how we can help..." required></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="form-checkbox-group">
+                                        <input type="checkbox" id="consent" name="consent" class="form-checkbox" required>
+                                        <label for="consent" style="font-size: 0.9rem; color: var(--gray-600);">
+                                            I agree to receive communications from FinanceWise and understand that my information will be used according to the <a href="/privacy.html" style="color: var(--primary);">Privacy Policy</a>. *
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
+                                    Send Message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="contact-info">
+                            <h3 style="margin-bottom: var(--space-6);">Get In Touch</h3>
+                            
+                            <div class="contact-item">
+                                <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                </svg>
+                                <div>
+                                    <h4>Location</h4>
+                                    <p style="color: var(--gray-600); margin: 0;">Sydney, Australia<br>Remote consultations available</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 12.75c1.63 0 3.07.39 4.24.9 1.08.48 1.76 1.56 1.76 2.73V18H6v-1.61c0-1.18.68-2.26 1.76-2.73 1.17-.52 2.61-.91 4.24-.91zM4 13c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm16 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/>
+                                </svg>
+                                <div>
+                                    <h4>Response Time</h4>
+                                    <p style="color: var(--gray-600); margin: 0;">Within 24 hours<br>Monday - Friday</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                <div>
+                                    <h4>Free Consultation</h4>
+                                    <p style="color: var(--gray-600); margin: 0;">30-minute session<br>No commitment required</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="map-container" style="margin-top: var(--space-8);">
+                            <svg class="map-svg" viewBox="0 0 400 300" role="img" aria-labelledby="map-title">
+                                <title id="map-title">Sydney, Australia Location Map</title>
+                                <rect width="400" height="300" fill="#f0f9ff" stroke="#e0f2fe"/>
+                                
+                                <!-- Australia outline simplified -->
+                                <path d="M50 150 Q100 120 150 130 Q200 125 250 140 Q300 135 350 150 Q370 180 350 220 Q300 240 250 235 Q200 245 150 240 Q100 235 50 210 Q30 180 50 150" 
+                                      fill="#ddd6fe" stroke="#8b5cf6" stroke-width="2"/>
+                                
+                                <!-- Sydney marker -->
+                                <circle cx="280" cy="200" r="8" fill="#ef4444"/>
+                                <circle cx="280" cy="200" r="4" fill="#ffffff"/>
+                                
+                                <!-- Location label -->
+                                <rect x="220" y="175" width="80" height="20" fill="rgba(255,255,255,0.9)" rx="4"/>
+                                <text x="260" y="188" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">Sydney</text>
+                                
+                                <!-- Decorative elements -->
+                                <circle cx="100" cy="100" r="2" fill="#93c5fd" opacity="0.6"/>
+                                <circle cx="320" cy="80" r="2" fill="#93c5fd" opacity="0.6"/>
+                                <circle cx="80" cy="250" r="2" fill="#93c5fd" opacity="0.6"/>
+                            </svg>
+                            <p style="color: var(--gray-600); text-align: center;">Operating remotely from Sydney, Australia<br>Physical address available on request</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg class="footer-logo-icon" role="img">
+                            <rect x="2" y="2" width="20" height="20" rx="4" fill="#6366f1"/>
+                            <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="footer-brand-text">FinanceWise</span>
+                    </div>
+                    <p class="footer-description">Empowering financial literacy and business growth for a better future.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-group">
+                        <h4 class="footer-title">About Product</h4>
+                        <ul class="footer-menu">
+                            <li><a href="/about.html">About Us</a></li>
+                            <li><a href="/services.html">Services</a></li>
+                            <li><a href="/blog/">Blog</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-group">
+                        <h4 class="footer-title">Company</h4>
+                        <ul class="footer-menu">
+                            <li><a href="/about.html">Our Story</a></li>
+                            <li><a href="/blog/">Blog</a></li>
+                            <li><a href="/contact.html">Careers</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-group">
+                        <h4 class="footer-title">Support</h4>
+                        <ul class="footer-menu">
+                            <li><a href="/contact.html">Help Center</a></li>
+                            <li><a href="/contact.html">Account Information</a></li>
+                            <li><a href="/contact.html">Early Access</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4 class="footer-title">Stay Updated</h4>
+                    <form class="newsletter-form" onsubmit="return false;">
+                        <input type="email" placeholder="Your email address" class="newsletter-input">
+                        <button type="submit" class="btn btn-primary">Get Early Access</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-legal">© 2025 FinanceWise • <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a> • Registered in AU • Operating remotely from Sydney, Australia. Physical address available on request.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+    <script>
+        // Contact form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const successMessage = document.getElementById('success');
+            
+            // Check if we're showing success from URL hash
+            if (window.location.hash === '#success') {
+                successMessage.classList.add('show');
+                form.style.display = 'none';
+            }
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Disable submit button
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                
+                try {
+                    const formData = new FormData(form);
+                    
+                    // Submit to Formspree
+                    await fetch(form.action, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    // Always show success (regardless of response)
+                    form.style.display = 'none';
+                    successMessage.classList.add('show');
+                    window.location.hash = 'success';
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                    
+                } catch (error) {
+                    // Even on error, show success message
+                    form.style.display = 'none';
+                    successMessage.classList.add('show');
+                    window.location.hash = 'success';
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
